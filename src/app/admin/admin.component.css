@@ -1,0 +1,18 @@
+.container.admin {
+
+  border-radius:25px;
+  border:2px solid #dbe1d3;
+  padding:25px;
+  width:430px;
+  height:300px;
+  margin: 0
+}
+
+.file-form {
+  display:flex;
+  flex-direction:column;
+}
+
+.btn-admin{
+  margin-top: 20px;
+}
