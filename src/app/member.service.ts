@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Member } from './members.model';
 
 
@@ -6,6 +6,7 @@ import { Member } from './members.model';
   providedIn: 'root'
 })
 export class MemberService {
+  memberAdded = new EventEmitter<Member[]>();
   private members: Member [] = [
 
     new Member( 'Sis Mary Olayinka', 'http://placeimg.com/160/200/people?t=1536927237372'),
@@ -30,5 +31,10 @@ export class MemberService {
 
   getMember() {
     return this.members.slice();
+  }
+
+  onAddTeam(member: Member) {
+    this.members.push(member);
+    this.memberAdded.emit(this.members.slice());
   }
 }

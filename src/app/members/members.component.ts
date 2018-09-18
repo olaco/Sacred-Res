@@ -14,7 +14,13 @@ export class MembersComponent implements OnInit {
   constructor(private mService: MemberService) { }
 
   ngOnInit() {
-this.mService.getMember();
+    this.members = this.mService.getMember();
+    this.mService.memberAdded
+    .subscribe(
+      (members: Member[]) => {
+        this.members = this.members;
+      }
+    );
   }
 
 }
