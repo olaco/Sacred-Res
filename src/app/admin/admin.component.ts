@@ -20,9 +20,9 @@ export class AdminComponent implements OnInit {
 
   onAddTeam(member: Member) {
     this.members.push(member);
-    const ingfile = this.fileInputRef.nativeElement.value;
+    const ingFile = this.fileInputRef.nativeElement.value;
     const ingName = this.nameInputRef.nativeElement.value;
-    const newMember =  new Member(ingName, ingfile);
+    const newMember =  new Member(ingName, ingFile);
     this.mService.onAddTeam(newMember);
     console.log(newMember);
 

@@ -9,12 +9,15 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { AdminComponent } from './admin/admin.component';
 import { MembersComponent } from './members/members.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'header', component: HeaderComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'members', component: MembersComponent},
+  {path: 'not-found', component: PageNotFoundComponent},
+  {path: '**', redirectTo: '/not-found'}
 ];
 
 @NgModule({
@@ -23,7 +26,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     HomeComponent,
     AdminComponent,
-    MembersComponent
+    MembersComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Member } from './../members.model';
 import { MemberService } from './../member.service';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MembersComponent implements OnInit {
   members: Member [];
-  constructor(private mService: MemberService) { }
+  constructor(private mService: MemberService,
+  private router: Router ) { }
 
   ngOnInit() {
     this.members = this.mService.getMember();
@@ -21,6 +23,10 @@ export class MembersComponent implements OnInit {
         this.members = this.members;
       }
     );
+  }
+
+  onReload() {
+    this.router.navigate(['/admin']);
   }
 
 }
