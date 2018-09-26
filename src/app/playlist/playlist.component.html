@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-xs-12 col-sm-4">
+    <span class="parent">
+      playlist works!
+
+
+    <ul class="child">
+      <li class="nav-item"><a class="nav-link" style="cursor: pointer">Worship</a></li>
+      <li class="nav-item"><a class="nav-link" style="cursor: pointer">Contemporary</a></li>
+      <li class="nav-item"><a class="nav-link" style="cursor: pointer;" [routerLink]="['./trad']">Trad</a></li>
+      <li class="nav-item"><a class="nav-link" style="cursor: pointer" [routerLink]="['special']">Special</a></li>
+
+    </ul>
+
+
+    </span>
+
+  </div>
+  <div class="col-xs-12 col-sm-8">
+    <router-outlet></router-outlet>
+
+  </div>
+</div>
+
+
+
+
+
+
