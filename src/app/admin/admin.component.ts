@@ -14,6 +14,7 @@ import { NgForm } from '@angular/forms';
 export class AdminComponent implements OnInit {
   // @ViewChild('nameInput')nameInputRef: ElementRef;
   // @ViewChild('fileInput')fileInputRef: ElementRef;
+  searchTerm: string;
   index;
   members: Member [];
 

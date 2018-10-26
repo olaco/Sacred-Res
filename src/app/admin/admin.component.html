@@ -1,4 +1,6 @@
 <div class="container admin">
+
+
   <div class="row">
 
       <div class="col-sm-7">
@@ -23,12 +25,24 @@
           </form>
       </div>
 
+      <div class="mt-5">
+          <input
+          type="text"
+          placeholder="Search Name"
+          [(ngModel)]="searchTerm">
+
+          </div>
+
+
       <div class="row">
 
-          <div class="col-xs-5 mt-4 card" *ngFor="let item of members; let i = index">
+
+
+
+          <div class="col-xs-5 mt-4 card" *ngFor="let item of members | filter: searchTerm; let i = index">
               <ul class="list-group card-body">
                 <!-- array goes in btw the li  -->
-                 <li class="list-group-item card-title">{{i + 1 + '. ' + item.name}}<Span class="xBtn"><Button class="btn-btn-danger"
+                 <li class="list-group-item ">{{i + 1 + '. ' + item.name}}<Span class="xBtn"><Button class="btn-btn-danger"
                     (click)="onDelete(item)">X</Button></Span></li>
 
               </ul>

@@ -15,6 +15,7 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import { TradComponent } from './trad/trad.component';
 import { SpecialComponent } from './special/special.component';
 import { DefaultComponent } from './default/default.component';
+import { FilterPipe } from './filter.pipe';
 
 // const appRoutes: Routes = [
 //   {path: '', component: HomeComponent},
@@ -42,7 +43,8 @@ import { DefaultComponent } from './default/default.component';
     PlaylistComponent,
     TradComponent,
     SpecialComponent,
-    DefaultComponent
+    DefaultComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
