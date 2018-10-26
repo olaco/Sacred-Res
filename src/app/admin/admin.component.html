@@ -1,17 +1,47 @@
 <div class="container admin">
   <div class="row">
-      <div class="col">
-          <form>
+
+      <div class="col-sm-7">
+          <form (ngSubmit)="onAddTeam(f)" #f ="ngForm">
               <h4>Welcome Admin</h4><label>Name</label>
               <input class="form-control"
-              type="text" #nameInput  />
-              <div class="file-form">
+              type="text"
+              ngModel
+              name="name"
+              required
+              />
+              <!-- <div class="file-form">
                 <label>Image</label>
-                <input type="file" #fileInput/>
-              </div>
-              <button class="btn btn-secondary btn-admin" (click)="onAddTeam()">Add</button>
+                <input type="file"
+                id="image"
+                ngModel
+                name="image"
+                />
+              </div> -->
+              <button class="btn btn-secondary btn-admin" type="submit" [disabled]="!f.valid">Add</button>
+              <button class="btn btn-danger btn-admin ml-1" type="button" (click)="onDelete()">Delete</button>
           </form>
       </div>
+
+      <div class="row">
+
+          <div class="col-xs-5 mt-4 card" *ngFor="let item of members; let i = index">
+              <ul class="list-group card-body">
+                <!-- array goes in btw the li  -->
+                 <li class="list-group-item card-title">{{i + 1 + '. ' + item.name}}<Span class="xBtn"><Button class="btn-btn-danger"
+                    >X</Button></Span></li>
+
+              </ul>
+
+
+            </div>
+
+      </div>
+
+
   </div>
- <!-- <app-members></app-members> -->
+
+
 </div>
+
+

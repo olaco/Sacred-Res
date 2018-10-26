@@ -1,7 +1,9 @@
+import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { Member } from './../members.model';
 import { MemberService } from './../member.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+
 
 
 
@@ -10,14 +12,15 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './members.component.html',
   styleUrls: ['./members.component.css']
 })
-export class MembersComponent implements OnInit {
+export class MembersComponent implements OnInit, OnDestroy {
   members: Member [];
+  private subscription: Subscription;
   constructor(private mService: MemberService,
   private router: Router ) { }
 
   ngOnInit() {
     this.members = this.mService.getMember();
-    this.mService.memberAdded
+   this.subscription = this.mService.memberAdded
     .subscribe(
       (members: Member[]) => {
         this.members = this.members;
@@ -27,6 +30,9 @@ export class MembersComponent implements OnInit {
 
   onReload() {
     this.router.navigate(['/admin']);
+  }
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
 }

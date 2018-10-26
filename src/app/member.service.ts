@@ -1,27 +1,33 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Member } from './members.model';
+import { Subject } from 'rxjs';
+
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class MemberService {
-  memberAdded = new EventEmitter<Member[]>();
+  memberAdded = new Subject<Member[]>();
+  onEdit = new Subject<number>();
+
   private members: Member [] = [
 
-    new Member( 'Sis Mary Olayinka', 'http://placeimg.com/160/200/people?t=1536927237372'),
-    new Member( 'Bro Seyi Emmanuel', 'http://placeimg.com/160/200/people?t=1536927237372'),
-    new Member( 'Bro Gbenga', 'http://placeimg.com/160/200/people?t=1536927237372'),
-    new Member( 'Sis Chichi', 'http://placeimg.com/160/200/people?t=1536927237372'),
-    new Member( 'Sis Ese', 'http://placeimg.com/160/200/people?t=1536927237372'),
-    new Member( 'Sis Victoria', 'http://placeimg.com/160/200/people?t=1536927237372'),
-    new Member( 'Sis Chinwe', 'http://placeimg.com/160/200/people?t=1536927237372'),
-    new Member( 'Bro Ema', 'http://placeimg.com/160/200/people?t=1536927237372'),
-    new Member( 'Bro Ema', 'http://placeimg.com/160/200/people?t=1536927237372'),
-    new Member( 'Bro Ema', 'http://placeimg.com/160/200/people?t=1536927237372'),
-    new Member( 'Bro Gibson', 'http://placeimg.com/160/200/people?t=1536927237372'),
-    new Member( 'Bro Sam', 'http://placeimg.com/160/200/people?t=1536927237372'),
-    new Member( 'Sis Bimbo', 'http://placeimg.com/160/200/people?t=1536927237372'),
+    new Member( 'Sis Mary Olayinka'),
+    new Member( 'Bro Seyi Emmanuel'),
+    new Member( 'Bro Gbenga'),
+    new Member( 'Sis Chichi'),
+    new Member( 'Sis Ese'),
+    new Member( 'Sis Victoria'),
+    new Member( 'Sis Chinwe'),
+    new Member( 'Bro Ema'),
+    new Member( 'Bro Ema'),
+    new Member( 'Bro Ema'),
+    new Member( 'Bro Gibson'),
+    new Member( 'Bro Sam'),
+    new Member( 'Sis Bimbo'),
+    new Member('Sis Patience')
+
 
 
 
@@ -33,8 +39,20 @@ export class MemberService {
     return this.members.slice();
   }
 
+  // for Edit
+  getEditMember(index: number) {
+    return this.members[index];
+
+  }
+
   onAddTeam(member: Member) {
     this.members.push(member);
-    this.memberAdded.emit(this.members.slice());
+    this.memberAdded.next(this.members.slice());
+  }
+
+  Delete(index: number) {
+    this.members.splice(index, 1);
+    this.memberAdded.next(this.members.slice());
+
   }
 }
