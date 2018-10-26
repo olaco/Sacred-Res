@@ -14,6 +14,7 @@ import { NgForm } from '@angular/forms';
 export class AdminComponent implements OnInit {
   // @ViewChild('nameInput')nameInputRef: ElementRef;
   // @ViewChild('fileInput')fileInputRef: ElementRef;
+  index;
   members: Member [];
 
 
@@ -42,9 +43,12 @@ export class AdminComponent implements OnInit {
 
   }
 
-  onDelete(i) {
-    this.mService.Delete(i);
-
+  onDelete(index) {
+    for (let i = 0; i <= this.members.length; i++) {
+      if (index === this.members[i]) {
+        this.mService.DeleteMember(i);
+      }
+    }
 
   }
 

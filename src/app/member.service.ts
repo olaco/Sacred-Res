@@ -50,7 +50,7 @@ export class MemberService {
     this.memberAdded.next(this.members.slice());
   }
 
-  Delete(index: number) {
+  DeleteMember(index: number) {
     this.members.splice(index, 1);
     this.memberAdded.next(this.members.slice());
 
