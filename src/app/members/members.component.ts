@@ -19,7 +19,11 @@ export class MembersComponent implements OnInit, OnDestroy {
   private router: Router ) { }
 
   ngOnInit() {
-    this.members = this.mService.getMember();
+    this.mService.getMember().subscribe(
+      data => this.members = data,
+      err => console.log(err),
+      () => console.log('member')
+    );
    this.subscription = this.mService.memberAdded
     .subscribe(
       (members: Member[]) => {

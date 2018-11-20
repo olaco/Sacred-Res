@@ -1,0 +1,6 @@
+{
+  "/":{
+    "target":"http://localhost/sacredRes",
+    "secure": false
+  }
+}

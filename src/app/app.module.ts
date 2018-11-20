@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule} from '@angular/forms';
 // import { Routes, RouterModule } from '@angular/router';
 
+import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -49,7 +50,8 @@ import { FilterPipe } from './filter.pipe';
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [MemberService],
   bootstrap: [AppComponent]

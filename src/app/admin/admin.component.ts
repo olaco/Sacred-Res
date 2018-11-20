@@ -17,41 +17,58 @@ export class AdminComponent implements OnInit {
   searchTerm: string;
   index;
   members: Member [];
+  member = new Member();
 
 
 
   constructor(private mService: MemberService) { }
 
   ngOnInit() {
-    this.members = this.mService.getMember();
-    this.mService.memberAdded
+    this.mService.getMember()
     .subscribe(
-      (members: Member[]) => {
-        this.members = this.members;
-      }
+      data => this.members = data,
+      err => console.log(err),
+      () => console.log('member')
     );
+    // this.mService.memberAdded
+    // .subscribe(
+    //   (members: Member[]) => {
+    //     this.members = members;
+    //   }
+    // );
   }
 
-  onAddTeam(form: NgForm ) {
+  onAddTeam() {
     // this.members.push(member);
     // const ingFile = this.fileInputRef.nativeElement.value;
     // const ingName = this.nameInputRef.nativeElement.value;
-    const value = form.value;
-    const newMember =  new Member(value.name);
-    this.mService.onAddTeam(newMember);
-    console.log(newMember);
-    form.reset();
+
+    this.mService.onAddTeam(this.member).subscribe(
+      data => this.members = data,
+  );
+
 
   }
 
-  onDelete(index) {
-    for (let i = 0; i <= this.members.length; i++) {
-      if (index === this.members[i]) {
-        this.mService.DeleteMember(i);
-      }
+  onDelete(index: Member) {
+    if (index !== null) {
+      this.mService.DeleteMember(index.id).subscribe(
+        data => this.members = data,
+    );
+    // for (let i = 0; i <= this.members.length; i++) {
+
+
+    //     pipe(
+    //       map((res) => {
+    //         this.members = res['data'];
+    //         return this.members;
+    //       }),
+    //       catchError(this.handleError)
+    //     );
+    //   }
     }
 
   }
 
 
-}
+ }
